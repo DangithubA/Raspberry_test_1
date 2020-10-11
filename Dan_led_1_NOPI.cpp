@@ -109,12 +109,12 @@ int main(){
 	cout << "TIP : type (a, b or c) character to continue" << endl;
 	led_Blu_Status = true;
 #ifndef NO_PI
-	int count1=0;
+	int countFirst=0;
 	while(count1<6){
 	    setLed(led_Blue_Output, led_Blu_Status);
         led_Blu_Status = !led_Blu_Status;
         sleep(1);
-        count1 = count1+1;
+        countFirst = countFirst+1;
         delay(timeout_Blue_Ms);
 	}	
 #else
@@ -173,12 +173,12 @@ int main(){
 				setLed(led_Green_Output, led_Green_Status);
 				cout << "TIP : type (a, b or c) character to continue" << endl;
 			#ifndef NO_PI
-				int count1=0;
+				int count0=0;
 				while(count1<6){
 				    setLed(led_Blue_Output, led_Blu_Status);
 			        led_Blu_Status = !led_Blu_Status;
 			        sleep(1);
-			        count1 = count1+1;
+			        count0 = count0+1;
 			        delay(timeout_Blue_Ms);
 				}	
 			#else
@@ -253,12 +253,12 @@ int main(){
 				setLed(led_Green_Output, led_Green_Status);
 				cout << "TIP : type (a) character to continue" << endl;
 			#ifndef NO_PI
-				int count1=0;
+				int count2=0;
 				while(count1<6){
 				    setLed(led_Yellow_Output, led_Yellow_Status);
 			        led_Yellow_Status = !led_Yellow_Status;
 			        sleep(1);
-			        count1 = count1+1;
+			        count2 = count2+1;
 			        delay(timeout_Yellow_Ms);
 				}	
 			#else
