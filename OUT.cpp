@@ -17,7 +17,7 @@ void setLed(int ledNumber, bool value){
 }
 
 int main(){
-	void init()
+	init();
 	bool led_Blu_Status = true;
 	setLed(led_Blue_Output, led_Blu_Status);
 	initsrc();
