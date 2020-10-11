@@ -21,11 +21,11 @@ int main(){
 	bool led_Blu_Status = true;
 	setLed(led_Blue_Output, led_Blu_Status);
 	initscr();
-    cbreak();
+    // cbreak();
     while(1){
         cout << "premi qualsiasi tasto per uscire" << endl;
         if(getchar()){
-            break();
+            break;
         }
     }
     endwin();
