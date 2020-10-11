@@ -136,6 +136,9 @@ int main(){
 	///
 
 	while(enableType){
+		int count0=0;
+		int count1=0;
+		int count2=0;
 		cout << "type a character" << endl;
 		cin >> entryChar;
 		numberEntryChar = (int) entryChar;
@@ -173,7 +176,6 @@ int main(){
 				setLed(led_Green_Output, led_Green_Status);
 				cout << "TIP : type (a, b or c) character to continue" << endl;
 			#ifndef NO_PI
-				int count0=0;
 				while(count0<6){
 				    setLed(led_Blue_Output, led_Blu_Status);
 			        led_Blu_Status = !led_Blu_Status;
@@ -213,7 +215,6 @@ int main(){
 				setLed(led_Green_Output, led_Green_Status);
 				cout << "TIP : type (b or c) character to continue" << endl;
 			#ifndef NO_PI
-				int count1=0;
 				while(count1<6){
 				    setLed(led_Yellow_Output, led_Yellow_Status);
 			        led_Yellow_Status = !led_Yellow_Status;
@@ -253,7 +254,6 @@ int main(){
 				setLed(led_Green_Output, led_Green_Status);
 				cout << "TIP : type (a) character to continue" << endl;
 			#ifndef NO_PI
-				int count2=0;
 				while(count2<6){
 				    setLed(led_Yellow_Output, led_Yellow_Status);
 			        led_Yellow_Status = !led_Yellow_Status;
