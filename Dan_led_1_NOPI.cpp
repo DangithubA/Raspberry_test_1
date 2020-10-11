@@ -101,7 +101,11 @@ int main(){
 	bool enableType = true;
 
 #ifndef NO_PI
-	void init()
+	init()
+	setLed(led_Blue_Output, led_Blu_Status);
+	setLed(led_Red_Output, led_Red_Status);
+	setLed(led_Yellow_Output, led_Yellow_Status);
+	setLed(led_Green_Output, led_Green_Status);
 #endif
 
 	///
