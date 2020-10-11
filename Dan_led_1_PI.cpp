@@ -101,7 +101,7 @@ int main(){
 	bool enableType = true;
 	
 #ifndef NO_PI
-	void init()
+	void init();
 #endif
 	
 	///
