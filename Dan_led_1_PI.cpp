@@ -100,6 +100,10 @@ int main(){
 	int nextState = 0;
 	bool enableType = true;
 	
+#ifndef NO_PI
+	void init()
+#endif
+	
 	///
 	/// start cycle first state activated
 	///
