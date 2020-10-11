@@ -4,8 +4,9 @@
 #include <unistd.h>  // used for the sleep function
 
 #ifndef NO_PI
-#include <conio.h> // used for kbhit function
-#include <wiringPi.h> // used for GPIO Raspberry
+	#include <wiringPi.h> // used for GPIO Raspberry
+#else
+	#include <conio.h> // used for kbhit function
 #endif
 
 using namespace std;
@@ -45,7 +46,7 @@ void setLed(int ledNumber, bool value) // ledNumber 0=Blue 1=Red 2=Yellow 3=Gree
 {
 #ifndef NO_PI
     digitalWrite(ledNumber, value);
-#else
+#endif
     if (ledNumber==0){
     	cout << "Setting led Blu Pin " << ledNumber << " to " << (value ? "ON" : "OFF") << endl;
 	}
@@ -61,7 +62,6 @@ void setLed(int ledNumber, bool value) // ledNumber 0=Blue 1=Red 2=Yellow 3=Gree
 	else{
 		cout << "I don't know which led turn on/off" << endl;
 	}
-#endif
 }
 
 ///
@@ -126,7 +126,7 @@ int main(){
 				break;
 			}
 	}
-#endif   
+#endif
 	led_Blu_Status = true;
 	setLed(led_Blue_Output, led_Blu_Status);
 	
