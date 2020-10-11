@@ -1,10 +1,11 @@
-#include <conio.h> // used for kbhit function
-#include <iostream>
-#include <unistd.h>  // used for the sleep function
 #define NO_PI
 
+#include <iostream>
+#include <unistd.h>  // used for the sleep function
+
 #ifndef NO_PI
-#include <wiringPi.h>
+#include <conio.h> // used for kbhit function
+#include <wiringPi.h> // used for GPIO Raspberry
 #endif
 
 using namespace std;
@@ -97,7 +98,7 @@ int main(){
 	bool led_Green_Status = false;
 	int currentStatus = 0;
 	int nextState = 0;
-	int enableType = 1;
+	bool enableType = true;
 	
 	///
 	/// start cycle first state activated
@@ -107,19 +108,25 @@ int main(){
 	cout << "s0 = 1" << endl;
 	cout << "TIP : type (a, b or c) character to continue" << endl;
 	led_Blu_Status = true;
-	//setLed(led_Blue_Output, led_Blu_Status);
-	while(1){
-        setLed(led_Blue_Output, led_Blu_Status);
+#ifndef NO_PI
+	int count1=0;
+	while(count1<6){
+	    setLed(led_Blue_Output, led_Blu_Status);
         led_Blu_Status = !led_Blu_Status;
         sleep(1);
-#ifndef NO_PI
+        count1 = count1+1;
         delay(timeout_Blue_Ms);
-#endif       
-		if(kbhit())
-        {
-            break;
-        }
-    }
+	}	
+#else
+	while(1){
+			setLed(led_Blue_Output, led_Blu_Status);
+	        led_Blu_Status = !led_Blu_Status;
+	        sleep(1);
+	        if(kbhit()){
+				break;
+			}
+	}
+#endif   
 	led_Blu_Status = true;
 	setLed(led_Blue_Output, led_Blu_Status);
 	
@@ -128,7 +135,7 @@ int main(){
 	/// state change based on state and input
 	///
 
-	while(enableType==1){
+	while(enableType){
 		cout << "type a character" << endl;
 		cin >> entryChar;
 		numberEntryChar = (int) entryChar;
@@ -157,7 +164,7 @@ int main(){
 				led_Yellow_Status = false;
 				led_Green_Status = false;
 				currentStatus = nextState;
-				enableType = 1;
+				enableType = true;
 				cout << "Current Status = s0" << endl;
 				cout << "s0 = " << s0 << endl;
 				setLed(led_Blue_Output, led_Blu_Status);
@@ -165,18 +172,25 @@ int main(){
 				setLed(led_Yellow_Output, led_Yellow_Status);
 				setLed(led_Green_Output, led_Green_Status);
 				cout << "TIP : type (a, b or c) character to continue" << endl;
-				while(1){
-			        setLed(led_Blue_Output, led_Blu_Status);
+			#ifndef NO_PI
+				int count1=0;
+				while(count1<6){
+				    setLed(led_Blue_Output, led_Blu_Status);
 			        led_Blu_Status = !led_Blu_Status;
 			        sleep(1);
-				#ifndef NO_PI
+			        count1 = count1+1;
 			        delay(timeout_Blue_Ms);
-				#endif       
-					if(kbhit())
-			        {
-			            break;
-			        }
-			    }
+				}	
+			#else
+				while(1){
+						setLed(led_Blue_Output, led_Blu_Status);
+				        led_Blu_Status = !led_Blu_Status;
+				        sleep(1);
+				        if(kbhit()){
+							break;
+						}
+				}
+			#endif   
 				led_Blu_Status = true;
 				setLed(led_Blue_Output, led_Blu_Status);
 				break;
@@ -190,7 +204,7 @@ int main(){
 				led_Yellow_Status = true;
 				led_Green_Status = false;
 				currentStatus = nextState;
-				enableType = 1;
+				enableType = true;
 				cout << "Current Status = S1" << endl;
 				cout << "s1 = " << s1 << endl;
 				setLed(led_Blue_Output, led_Blu_Status);
@@ -198,18 +212,25 @@ int main(){
 				setLed(led_Yellow_Output, led_Yellow_Status);
 				setLed(led_Green_Output, led_Green_Status);
 				cout << "TIP : type (b or c) character to continue" << endl;
-				while(1){
-			        setLed(led_Yellow_Output, led_Yellow_Status);
+			#ifndef NO_PI
+				int count1=0;
+				while(count1<6){
+				    setLed(led_Yellow_Output, led_Yellow_Status);
 			        led_Yellow_Status = !led_Yellow_Status;
 			        sleep(1);
-				#ifndef NO_PI
+			        count1 = count1+1;
 			        delay(timeout_Yellow_Ms);
-				#endif       
-					if(kbhit())
-			        {
-			            break;
-			        }
-			    }
+				}	
+			#else
+				while(1){
+						setLed(led_Yellow_Output, led_Yellow_Status);
+				        led_Yellow_Status = !led_Yellow_Status;
+				        sleep(1);
+				        if(kbhit()){
+							break;
+						}
+				}
+			#endif   
 				led_Yellow_Status = true;
 				setLed(led_Yellow_Output, led_Yellow_Status);
 				break;
@@ -223,7 +244,7 @@ int main(){
 				led_Yellow_Status = true;
 				led_Green_Status = false;
 				currentStatus = nextState;
-				enableType = 1;
+				enableType = true;
 				cout << "Current Status = S2" << endl;
 				cout << "s2 = " << s2 << endl;
 				setLed(led_Blue_Output, led_Blu_Status);
@@ -231,18 +252,25 @@ int main(){
 				setLed(led_Yellow_Output, led_Yellow_Status);
 				setLed(led_Green_Output, led_Green_Status);
 				cout << "TIP : type (a) character to continue" << endl;
-					while(1){
-			        setLed(led_Yellow_Output, led_Yellow_Status);
+			#ifndef NO_PI
+				int count1=0;
+				while(count1<6){
+				    setLed(led_Yellow_Output, led_Yellow_Status);
 			        led_Yellow_Status = !led_Yellow_Status;
 			        sleep(1);
-				#ifndef NO_PI
+			        count1 = count1+1;
 			        delay(timeout_Yellow_Ms);
-				#endif       
-					if(kbhit())
-			        {
-			            break;
-			        }
-			    }
+				}	
+			#else
+				while(1){
+						setLed(led_Yellow_Output, led_Yellow_Status);
+				        led_Yellow_Status = !led_Yellow_Status;
+				        sleep(1);
+				        if(kbhit()){
+							break;
+						}
+				}
+			#endif
 				led_Yellow_Status = true;
 				setLed(led_Yellow_Output, led_Yellow_Status);
 				break;	
@@ -256,7 +284,7 @@ int main(){
 				led_Yellow_Status = false;
 				led_Green_Status = true;
 				currentStatus = nextState;
-				enableType = 0;
+				enableType = false;
 				cout << "Current Status = S3" << endl;
 				cout << "s3 = " << s3 << endl;
 				setLed(led_Blue_Output, led_Blu_Status);
@@ -267,7 +295,7 @@ int main(){
 				return 0;
 				break;
 			case -1:
-				enableType = 0;
+				enableType = false;
 				goto error;
 			default : goto error;	
 		}	
