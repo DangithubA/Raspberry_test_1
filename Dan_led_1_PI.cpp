@@ -110,7 +110,7 @@ int main(){
 	led_Blu_Status = true;
 #ifndef NO_PI
 	int countFirst=0;
-	while(count1<6){
+	while(countFirst<6){
 	    setLed(led_Blue_Output, led_Blu_Status);
         led_Blu_Status = !led_Blu_Status;
         sleep(1);
@@ -174,7 +174,7 @@ int main(){
 				cout << "TIP : type (a, b or c) character to continue" << endl;
 			#ifndef NO_PI
 				int count0=0;
-				while(count1<6){
+				while(count0<6){
 				    setLed(led_Blue_Output, led_Blu_Status);
 			        led_Blu_Status = !led_Blu_Status;
 			        sleep(1);
@@ -254,7 +254,7 @@ int main(){
 				cout << "TIP : type (a) character to continue" << endl;
 			#ifndef NO_PI
 				int count2=0;
-				while(count1<6){
+				while(count2<6){
 				    setLed(led_Yellow_Output, led_Yellow_Status);
 			        led_Yellow_Status = !led_Yellow_Status;
 			        sleep(1);
